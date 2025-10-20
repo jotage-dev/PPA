@@ -1,0 +1,124 @@
+.objectives-section-horizontal {
+  padding: 5rem 0;
+  background-color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.objectives-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.objectives-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.objectives-header h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a2e2c;
+  margin-bottom: 1rem;
+}
+
+.objectives-header .highlight-text {
+  background: linear-gradient(45deg, #0d8f84, #14b8a6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.objectives-header p {
+  font-size: 1.15rem;
+  color: #3f5250;
+  line-height: 1.6;
+}
+
+.horizontal-timeline-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.horizontal-timeline {
+  display: flex;
+  min-width: fit-content;
+  padding: 2rem 0;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  flex: 0 0 280px;
+}
+
+.timeline-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  height: 3px;
+  width: 100%;
+  background-color: #e0f2f1;
+  z-index: 1;
+}
+
+.step-upper {
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #0d8f84;
+  color: #ffffff;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 0 3px #0d8f84;
+}
+
+.step-lower {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a2e2c;
+  margin: 0 0 0.5rem 0;
+}
+
+.timeline-description {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.horizontal-timeline-container::-webkit-scrollbar {
+  height: 8px;
+}
+.horizontal-timeline-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.horizontal-timeline-container::-webkit-scrollbar-thumb {
+  background: #0d8f84;
+  border-radius: 4px;
+}
+.horizontal-timeline-container::-webkit-scrollbar-thumb:hover {
+  background: #096d65;
+}
