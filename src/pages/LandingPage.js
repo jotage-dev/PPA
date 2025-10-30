@@ -8,6 +8,8 @@ import { Footer } from "../components/Footer";
 import { AboutSection } from "../components/AboutSection";
 import { ObjectivesSection } from "../components/ObjectivesSection";
 import { AdhesionSection } from "../components/AdhesionSection";
+import { InformativoSection } from "../components/Informativo";
+import { PartnersSection } from "../components/Parceiros";
 export default function LandingPage() {
   return (
     <div className="landing-page">
@@ -18,7 +20,9 @@ export default function LandingPage() {
       <FeaturesSection />
       <ProjectionsSection />
       <AdhesionSection />
+      <InformativoSection/>
       <NewsSection />
+      <PartnersSection/>
       <Footer />
     </div>
   );

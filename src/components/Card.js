@@ -6,7 +6,7 @@ import {
   Sprout,
   Gift,
   TrendingUp,
-  LandPlot
+  
 } from "lucide-react";
 import "../styles/badge-grid.css";
 import { useCountUpAnimation } from "../hooks/useCountUpAnimation";
@@ -70,12 +70,7 @@ export function FeaturesSection() {
       icon: Gift,
       category: "Incentivo Comunitário",
     },
-    {
-      title: "Propriedades inscritas no Programa",
-      value: "30",
-      icon: LandPlot,
-      category: "Total ",
-    },
+
   ];
 
   return (

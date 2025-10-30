@@ -15,6 +15,18 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.classList.add("mobile-menu-open");
+    } else {
+      document.body.classList.remove("mobile-menu-open");
+    }
+    return () => {
+      document.body.classList.remove("mobile-menu-open");
+    };
+  }, [mobileMenuOpen]);
+  
+
   const navLinks = [
     { href: "#inicio", text: "Início" },
     { href: "#sobre", text: "Sobre" },
@@ -22,6 +34,10 @@ export function Header() {
     { href: "#adesao", text: "Como Participar" },
     { href: "#adesao", text: "Contato" },
   ];
+
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
@@ -32,26 +48,29 @@ export function Header() {
             alt="Logo Produtor de Água"
             className="logo"
           />
-          
         </a>
 
         <nav className="desktop-nav">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link">
-              <span className="nav-link-text">{link.text}</span>
-              <span className="nav-link-underline"></span>
+            <a key={link.text} href={link.href} className="nav-link">
+              {link.text}
             </a>
           ))}
         </nav>
 
         <div className="header-actions">
-          <a href="tel:+5512982800180" className="action-button phone-button">
+          <a
+            href="https://wa.me/5512982800180"
+            target="_blank"
+            rel="noreferrer"
+            className="action-button phone-button"
+          >
             <Phone className="action-icon" />
-            <span className="action-text">(12) 98280-0180</span>
+            <span>(12) 98280-0180</span>
           </a>
           <a href="#adesao" className="action-button cta-button">
             <Send className="action-icon" />
-            <span className="action-text">Inscreva-se</span>
+            <span>Inscreva-se</span>
           </a>
         </div>
 
@@ -69,32 +88,38 @@ export function Header() {
       </div>
 
       <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
-        <nav className="mobile-nav">
+        <nav className="mobile-nav-links">
           {navLinks.map((link) => (
             <a
-              key={link.href}
+              key={link.text}
               href={link.href}
-              className="mobile-nav-link"
-              onClick={() => setMobileMenuOpen(false)}
+              className="nav-link"
+              onClick={closeMenu}
             >
               {link.text}
             </a>
           ))}
         </nav>
-        <div className="mobile-actions">
-          <a href="tel:+5512982800180" className="mobile-action-button">
-            <Phone className="mobile-action-icon" />
-            Entre em Contato
+
+        <div className="mobile-menu-actions">
+          <a
+            href="tel:+5512982800180"
+            className="action-button phone-button"
+            onClick={closeMenu}
+          >
+            <Phone className="action-icon" />
+            <span>(12) 98280-0180</span>
           </a>
           <a
             href="#adesao"
-            className="mobile-action-button primary"
-            onClick={() => setMobileMenuOpen(false)}
+            className="action-button cta-button"
+            onClick={closeMenu}
           >
-            <Send className="mobile-action-icon" />
-            Participar do Programa
+            <Send className="action-icon" />
+            <span>Participar do Programa</span>
           </a>
         </div>
+
         <div className="mobile-contact">
           <a
             href="mailto:produtordeagua@guaratingueta.sp.gov.br"
@@ -106,12 +131,7 @@ export function Header() {
         </div>
       </div>
 
-      {mobileMenuOpen && (
-        <div
-          className="mobile-overlay"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
+      {mobileMenuOpen && <div className="mobile-overlay" onClick={closeMenu} />}
     </header>
   );
 }

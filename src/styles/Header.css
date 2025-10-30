@@ -1,3 +1,10 @@
+/* Estilos do Body (Recomendado) */
+body.mobile-menu-open {
+  /* Impede o scroll da página principal quando o menu está aberto */
+  overflow: hidden;
+}
+
+/* Seus Estilos (Mantidos) */
 .header {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
@@ -162,6 +169,8 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
+  /* Garante que o botão fique acima do menu (se necessário) */
+  z-index: 101; 
 }
 
 .mobile-menu-button:hover {
@@ -175,20 +184,101 @@
   color: #0d8f84;
 }
 
+
+/* === MUDANÇAS AQUI === */
+
+/* 1. Estilização do painel do menu mobile */
 .mobile-menu {
-  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px; /* Largura máxima do menu */
+  height: 100vh; /* Altura total da tela */
+  background-color: #ffffff;
+  z-index: 100; /* Fica acima do conteúdo, no mesmo nível do header */
+  
+  /* Esconde o menu fora da tela à direita */
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.3s ease-in-out, visibility 0.3s;
+  
+  overflow-y: auto; /* Permite scroll se o menu for longo */
+  display: flex;
+  flex-direction: column;
+  
+  /* Adiciona padding para o conteúdo não colar no header */
+  /* A altura do header mobile é ~60px, 80px dá uma folga */
+  padding-top: 80px; 
+  box-sizing: border-box;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
 }
+
+/* 2. Estilo do menu quando "aberto" (classe .open) */
 .mobile-menu.open {
-  display: block;
+  transform: translateX(0);
+  visibility: visible;
 }
+
+/* Container para os links de navegação dentro do menu mobile */
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ocupa o espaço disponível */
+}
+
+/* Container para os botões de ação dentro do menu mobile */
+.mobile-menu-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  border-top: 1px solid #e8eeed;
+}
+
+/* === FIM DAS MUDANÇAS GLOBAIS === */
+
 
 @media screen and (max-width: 1024px) {
   .desktop-nav,
   .header-actions {
     display: none;
   }
+  
   .mobile-menu-button {
     display: flex;
+  }
+
+  /* === ADIÇÕES AQUI === */
+  
+  /* 3. Estiliza os links *dentro* do menu mobile */
+  /* Usamos uma classe nova para não conflitar com .nav-link desktop */
+  .mobile-nav-links .nav-link {
+    display: block;
+    padding: 1rem 2rem;
+    font-size: 1.15rem; /* Fonte maior para toque */
+    font-weight: 600;
+    color: #1a2e2c;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+  }
+
+  .mobile-nav-links .nav-link::after {
+    /* Remove o efeito de sublinhado do desktop */
+    display: none;
+  }
+
+  .mobile-nav-links .nav-link:hover {
+    color: #0d8f84;
+    background-color: #f9f9f9;
+  }
+  
+  /* 4. Estiliza os botões *dentro* do menu mobile */
+  .mobile-menu-actions .action-button {
+    width: 100%;
+    justify-content: center; /* Centraliza o texto/ícone */
+    padding: 0.875rem;
+    font-size: 1rem;
   }
 }
 
@@ -204,5 +294,12 @@
   }
   .logo-text {
     display: none;
+  }
+  
+  /* 5. Ajusta o padding-top do menu para o header menor */
+  .mobile-menu {
+    /* (Logo 40px + Padding 2 * 0.75rem) ~= 64px. 70px é seguro. */
+    padding-top: 70px;
+    max-width: 100%; /* Menu ocupa a tela inteira */
   }
 }

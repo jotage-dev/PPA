@@ -55,7 +55,7 @@ export function AdhesionSection() {
               <ul className="contact-list">
                 <li className="contact-item">
                   <Phone size={20} />
-                  <a href="tel:+551231285400">(12) 3128-5400</a>
+                  <a href="tel:+551231285400">(12) 3128-5400 – R. 2527</a>
                 </li>
                 <li className="contact-item">
                   <Phone size={20} />

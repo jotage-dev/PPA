@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-  MapPin,
-  Phone,
-  Mail,
-} from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 import "../styles/Footer.css";
 
@@ -26,40 +18,6 @@ export function Footer() {
             Preservando nascentes e garantindo o futuro dos nossos recursos
             hídricos com sustentabilidade.
           </p>
-          <div className="social-links">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <Facebook size={18} />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              <Instagram size={18} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={18} />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-            >
-              <Twitter size={18} />
-            </a>
-          </div>
         </div>
 
         <div className="footer-column links-column">
@@ -88,7 +46,11 @@ export function Footer() {
           <ul className="contact-info">
             <li className="contact-item">
               <MapPin className="contact-icon" />
-              <span>Guaratinguetá - SP, Brasil</span>
+              <span>
+                {" "}
+                R. Ver. Octávio Nascimento Monteiro, 321, 1º andar - Polo
+                Industrial I - Guaratinguetá - SP
+              </span>
             </li>
             <li className="contact-item">
               <Phone className="contact-icon" />
@@ -102,8 +64,6 @@ export function Footer() {
             </li>
           </ul>
         </div>
-
-   
       </div>
 
       <div className="footer-bottom">

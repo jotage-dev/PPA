@@ -25,9 +25,11 @@
 
 .noticias-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* -- MUDANÇA -- */
+  /* Alterado para '1fr' para empilhar os cards largos */
+  grid-template-columns: 1fr;
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 1200px; /* Você pode ajustar isso, ex: 900px */
   margin: 0 auto;
 }
 
@@ -38,7 +40,9 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease-in-out;
   display: flex;
-  flex-direction: column;
+  /* -- MUDANÇA -- */
+  /* Alterado para 'row' para o layout horizontal */
+  flex-direction: row;
   border: 1px solid #e2e8f0;
 }
 
@@ -49,12 +53,17 @@
 
 .noticia-image-wrapper {
   position: relative;
-  width: 100%;
-  height: 220px;
   overflow: hidden;
+  /* -- MUDANÇA -- */
+  /* Removemos width e height fixos */
+  /* Adicionamos uma base de largura para a imagem */
+  flex-basis: 300px; /* Largura da coluna da imagem */
+  flex-shrink: 0;   /* Impede que a imagem encolha */
 }
 
 .noticia-card img {
+  /* -- MUDANÇA -- */
+  /* Alterado de 320px para 100% */
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -154,5 +163,19 @@
 
   .noticias h2 {
     font-size: 2rem;
+  }
+
+  /* -- MUDANÇA -- */
+  /* Faz o card voltar a ser vertical em telas pequenas */
+  .noticia-card {
+    flex-direction: column;
+  }
+
+  /* -- MUDANÇA -- */
+  /* Restaura o wrapper da imagem para o layout vertical */
+  .noticia-image-wrapper {
+    flex-basis: auto; /* Reseta a base flex */
+    width: 100%;
+    height: 220px; /* Altura fixa para a imagem no mobile */
   }
 }
